@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <table id="myTable">
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+    </tr>
+    <tr>
+      <td>Row 1, Col 1</td>
+      <td>Row 1, Col 2</td>
+    </tr>
+    <tr>
+      <td>Row 2, Col 1</td>
+      <td>Row 2, Col 2</td>
+    </tr>
+  </table>
+  <button onclick="copyColumn(0)">Copy Column 1</button>
+  <button onclick="copyColumn(1)">Copy Column 2</button>
+
+  <script>
+    function copyColumn(colIndex) {
+      const table = document.getElementById("myTable");
+      const rows = table.getElementsByTagName("tr");
+      let columnData = [];
+
+      // Skip the header row (index 0)
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        if (cells[colIndex]) {
+          columnData.push(cells[colIndex].innerText);
+        }
+      }
+
+      // Join data with newlines and copy to clipboard
+      const textToCopy = columnData.join("\n");
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => alert("Column copied to clipboard!"))
+        .catch(err => console.error("Failed to copy: ", err));
+    }
+  </script>
+</body>
+</html>
