@@ -17,55 +17,13 @@
   </style>
 </head>
 <body>
-  <table id="myTable">
-    <tr>
-      <th>Točke</th>
-      <th>Skoki</th>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>-</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-  </table>
-  <button onclick="copyColumn(0)">Kopiraj točke</button>
-  <button onclick="copyColumn(1)">Kopiraj skoke</button>
-
-  <script>
-    function copyColumn(colIndex) {
-      const table = document.getElementById("myTable");
-      const rows = table.getElementsByTagName("tr");
-      let columnData = [];
-
-      // Skip the header row (index 0)
-      for (let i = 1; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        if (cells[colIndex]) {
-          columnData.push(cells[colIndex].innerText);
-        }
-      }
-
-      // Join data with newlines and copy to clipboard
-      const textToCopy = columnData.join("\n");
-      navigator.clipboard.writeText(textToCopy)
-        .then(() => alert("Column copied to clipboard!"))
-        .catch(err => console.error("Failed to copy: ", err));
-    }
-  </script>
+	<a href='LAL_round1_statistika.html'>LAL</a>
+	<a href='HOU_round1_statistika.html'>HOU</a>
+	<a href='DAL_round1_statistika.html'>DAL</a>
+	<a href='SAS_round1_statistika.html'>SAS</a>
+	<a href='NYK_round1_statistika.html'>NYK</a>
+	<a href='CHI_round1_statistika.html'>CHI</a>
+	<a href='GSW_round1_statistika.html'>GSW</a>
+	<a href='BOS_round1_statistika.html'>BOS</a>
 </body>
 </html>
