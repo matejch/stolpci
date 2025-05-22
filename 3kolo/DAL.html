@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Statistika</title>
+    <style>
+      table { border-collapse: collapse; }
+      th, td { border: 1px solid #888; padding: 6px; text-align: center; font-size: 18px; }
+      th { background: #eee; }
+      .dnp { color: #888; }
+      .team-row { background: #f0f0f0; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <h2>Statistika igralcev (DAL)</h2>
+    <table id='statistics-table'>
+      <tr><th>#</th><th>Ime</th><th>Točke</th><th>Skoki</th><th>Podaje</th><th>Blokade</th><th>Ukradene</th><th>Prekrški</th><th>2PT</th><th>3PT</th><th>FT</th><th>Index</th></tr>
+      <tr><td>3</td><td>Miha Rutar</td><td>23</td><td>6</td><td>3</td><td>-</td><td>1</td><td>1</td><td>3/6 - 50%</td><td>5/11 - 45%</td><td>2/2 - 100%</td><td>23</td></tr>
+      <tr><td>1</td><td>Mark Manfreda</td><td>13</td><td>6</td><td>-</td><td>-</td><td>-</td><td>4</td><td>5/9 - 56%</td><td>1/9 - 11%</td><td>-</td><td>3</td></tr>
+      <tr><td>0</td><td>Alen Červ</td><td>10</td><td>11</td><td>1</td><td>3</td><td>-</td><td>3</td><td>3/4 - 75%</td><td>-</td><td>4/6 - 67%</td><td>19</td></tr>
+      <tr><td>99</td><td>Klemen Tonkli</td><td>9</td><td>6</td><td>7</td><td>-</td><td>-</td><td>1</td><td>3/8 - 38%</td><td>0/5 - 0%</td><td>3/6 - 50%</td><td>8</td></tr>
+      <tr><td>25</td><td>Sandi Ornik</td><td>2</td><td>4</td><td>-</td><td>-</td><td>-</td><td>2</td><td>1/1 - 100%</td><td>-</td><td>-</td><td>4</td></tr>
+      <tr><td>30</td><td>Tadej Rutar</td><td>-</td><td>1</td><td>-</td><td>-</td><td>1</td><td>2</td><td>0/1 - 0%</td><td>0/1 - 0%</td><td>-</td><td>-2</td></tr>
+      <tr><td>56</td><td>Martin Leban</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-1</td></tr>
+      <tr class='dnp'><td>19</td><td>Tomaž Skočir</td><td colspan='10'>Ni igral</td></tr>
+      <tr class='dnp'><td>24</td><td>Jure Murovec</td><td colspan='10'>Ni igral</td></tr>
+      <tr class='dnp'><td>92</td><td>Miha Topolšek</td><td colspan='10'>Ni igral</td></tr>
+      <tr class='team-row'><td>T</td><td>Ekipa</td><td>57</td><td>34</td><td>11</td><td>3</td><td>2</td><td>14</td><td>15/29 - 52%</td><td>6/26 - 23%</td><td>9/14 - 64%</td><td>54</td></tr>
+      <tr>
+        <td><button onclick="copyColumn('statistics-table', 0)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 1)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 2)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 3)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 4)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 5)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 6)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 7)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 8)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 9)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 10)">Kopiraj</button></td>
+        <td><button onclick="copyColumn('statistics-table', 11)">Kopiraj</button></td>
+      </tr>
+    </table>
+    <script>
+      function copyTableToClipboard(tableId) {
+        var table = document.getElementById(tableId);
+        var rows = table.querySelectorAll('tr');
+        var text = '';
+        rows.forEach(function(row) {
+          var cells = row.querySelectorAll('th,td');
+          var rowText = [];
+          cells.forEach(function(cell) {
+            rowText.push(cell.innerText);
+          });
+          text += rowText.join('\t') + '\n';
+        });
+        navigator.clipboard.writeText(text);
+        alert('Tabela je kopirana v odložišče!');
+      }
+      function copyColumn(tableId, colIdx) {
+        var table = document.getElementById(tableId);
+        var rows = table.querySelectorAll('tr');
+        var text = '';
+        for (var i = 1; i < rows.length - 1; i++) {
+          var cells = rows[i].querySelectorAll('th,td');
+          if (cells.length > colIdx) {
+            text += cells[colIdx].innerText + '\n';
+          }
+        }
+        navigator.clipboard.writeText(text);
+        alert('Stolpec je kopiran v odložišče!');
+      }
+    </script>
+    <h3>Točke po četrtinah</h3>
+    <div>Q1: 16</div>
+    <div>Q2: 14</div>
+    <div>Q3: 13</div>
+    <div>Q4: 14</div>
+  </body>
+</html>
